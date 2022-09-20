@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title> Welcome!!</title></head>
+        <body>
+            <table>
+                <tr>
+                    <th>NAME</th>
+                    <th>CLASS</th>
+                    <th>SECTION</th>
+                    <th>EMAIL</th>
+                </tr>
+                <tr>
+                {% for item in data %}
+                    <td>{{item[0]}}</td>
+                    <td>{{item[1]}}</td>
+                    <td>{{item[2]}}</td>
+                    <td>{{item[3]}}</td>
+                    <td>{{item[4]}}</td>
+                {% endfor %}
+                </tr>
+            </table>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+            <a href="{{ url_for('sendmail') }}" title="Update password">Update password</a><br>
+            <a href="{{url_for('deleteuser')}}" title="Update password">Delete user</a>
+            
+        </body>
+</html>

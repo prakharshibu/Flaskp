@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title> Login</title></head>
+        <body>
+            <h1>Login Page</h1>
+            <form action="{{url_for('login')}}" method="POST" required>
+            <h2>Email</h2>
+            <input type="text" name="email" class="form-control" placeholder="Email" required>
+            <br>
+            <h2>Password</h2>
+            <input type="password" name="password" class="form-control" placeholder="Password">
+            <br>
+            <input type="submit" name="Login" value="Login">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+            <br><br>
+            <a href="{{ url_for('register') }}" title="register page">Create a new account </a>
+            <br><br>
+            <a href="http://127.0.0.1:5000/fpass" title="forgot password">Forgot password</a>
+            <br>
+            <br>
+        
+        </body>
+</html>
